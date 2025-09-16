@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/16 18:21:33 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/07/23 17:06:49 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/07/23 17:08:23 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_stack	*newlist;
-	int		i;
-
-	i = 0;
-	newlist = NULL;
-	newlist = create_node(i);
-	while (i < 10)
-		insert_back(&newlist, ++i);
-	printf("size: %d\n", list_size(newlist));
-	insert_at_position(&newlist, 123, 1);
-	delete_first(&newlist);
-	print_list(newlist);
-	// delete_last(&newlist);
-	free_list(newlist);
-	return (0);
+	if (lst == NULL)
+		return ;
+	while (lst != NULL)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

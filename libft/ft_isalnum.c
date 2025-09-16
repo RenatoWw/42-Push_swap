@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/16 18:21:33 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/07/13 14:13:51 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/07/15 14:56:48 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_isalnum(int c)
 {
-	t_stack	*newlist;
-	int		i;
-
-	i = 0;
-	newlist = NULL;
-	newlist = create_node(i);
-	while (i < 10)
-		insert_back(&newlist, ++i);
-	printf("size: %d\n", list_size(newlist));
-	insert_at_position(&newlist, 123, 1);
-	delete_first(&newlist);
-	print_list(newlist);
-	// delete_last(&newlist);
-	free_list(newlist);
-	return (0);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	else if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }

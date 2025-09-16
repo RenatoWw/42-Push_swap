@@ -1,32 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/16 18:21:33 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/07/17 16:06:03 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/07/17 16:21:05 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_stack	*newlist;
+	char	*newstr;
+	int		len;
 	int		i;
+	int		j;
 
+	len = ft_strlen((char *)s1) + ft_strlen((char *)s2);
+	newstr = malloc(sizeof(char) * len + 1);
+	if (newstr == NULL)
+		return (NULL);
 	i = 0;
-	newlist = NULL;
-	newlist = create_node(i);
-	while (i < 10)
-		insert_back(&newlist, ++i);
-	printf("size: %d\n", list_size(newlist));
-	insert_at_position(&newlist, 123, 1);
-	delete_first(&newlist);
-	print_list(newlist);
-	// delete_last(&newlist);
-	free_list(newlist);
-	return (0);
+	while (s1[i])
+	{
+		newstr[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		newstr[i++] = s2[j++];
+	}
+	newstr[i] = '\0';
+	return (newstr);
 }
+
+// int	main(void)
+// {
+// 	return (0);
+// }

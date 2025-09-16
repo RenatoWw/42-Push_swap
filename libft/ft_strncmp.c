@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/16 18:21:33 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/07/15 18:27:53 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/07/24 14:15:05 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_stack	*newlist;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	newlist = NULL;
-	newlist = create_node(i);
-	while (i < 10)
-		insert_back(&newlist, ++i);
-	printf("size: %d\n", list_size(newlist));
-	insert_at_position(&newlist, 123, 1);
-	delete_first(&newlist);
-	print_list(newlist);
-	// delete_last(&newlist);
-	free_list(newlist);
+	while (i < n && (s1[i] || s2[i]))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
 	return (0);
 }
+
+// int	main(void)
+// {
+// 	char	*s1;
+// 	char	*s2;
+
+// 	s1 = "teste";
+// 	s2 = "testado";
+// 	printf("%d", ft_strncmp(s1, s2, 5));
+// 	return (0);
+// }

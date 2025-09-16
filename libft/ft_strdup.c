@@ -1,32 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/16 18:21:33 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/07/16 18:43:30 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/07/23 18:01:42 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+char	*ft_strdup(const char *s)
 {
-	t_stack	*newlist;
-	int		i;
+	int		len;
+	char	*newstring;
 
-	i = 0;
-	newlist = NULL;
-	newlist = create_node(i);
-	while (i < 10)
-		insert_back(&newlist, ++i);
-	printf("size: %d\n", list_size(newlist));
-	insert_at_position(&newlist, 123, 1);
-	delete_first(&newlist);
-	print_list(newlist);
-	// delete_last(&newlist);
-	free_list(newlist);
-	return (0);
+	len = ft_strlen((char *)s);
+	newstring = malloc(sizeof(char) * (len + 1));
+	if (newstring == NULL)
+		return (NULL);
+	len = 0;
+	while (s[len])
+	{
+		newstring[len] = s[len];
+		len++;
+	}
+	newstring[len] = '\0';
+	return (newstring);
 }
+
+// int	main(void)
+// {
+// 	char	*s1;
+
+// 	s1 = "osasco";
+// 	ft_strdup(s1);
+// 	return (0);
+// }

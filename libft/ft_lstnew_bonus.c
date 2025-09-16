@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/16 18:21:33 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/07/22 19:22:27 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/07/22 21:26:10 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(void)
+t_list	*ft_lstnew(void *content)
 {
-	t_stack	*newlist;
-	int		i;
+	t_list	*newlist;
 
-	i = 0;
-	newlist = NULL;
-	newlist = create_node(i);
-	while (i < 10)
-		insert_back(&newlist, ++i);
-	printf("size: %d\n", list_size(newlist));
-	insert_at_position(&newlist, 123, 1);
-	delete_first(&newlist);
-	print_list(newlist);
-	// delete_last(&newlist);
-	free_list(newlist);
-	return (0);
+	newlist = malloc(sizeof(t_list));
+	if (newlist == NULL)
+		return (NULL);
+	newlist->content = content;
+	newlist->next = NULL;
+	return (newlist);
 }
+
+// int	main(void)
+// {
+// 	ft_lstnew("oi");
+// 	return (0);
+// }
