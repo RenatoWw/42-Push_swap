@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:48:27 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/16 18:20:28 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/18 19:52:35 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,19 @@ void	delete_first(t_stack **head)
 
 void	delete_last(t_stack **head)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	if (!(*head))
 		return ;
 	temp = *head;
 	if (temp->next == NULL)
 	{
-		temp = NULL;
-		free(temp);
+		*head = NULL;
+		free(*head);
+		return ;
 	}
 	while (temp->next != NULL)
 		temp = temp->next;
-
-	// free(temp);
-	// temp = temp->prev;
-	// printf("\n%d\n", temp->content);
-	// temp->next = NULL;
-	// temp = NULL;
-	// free(temp);
-	
-	// printf("\n%p\n", temp->next);
-	// free(temp);
+	temp->prev->next = NULL;
+	free(temp);
 }

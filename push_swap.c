@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/16 18:21:33 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/18 19:49:19 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ int	main(void)
 
 	i = 0;
 	newlist = NULL;
-	newlist = create_node(i);
 	while (i < 10)
-		insert_back(&newlist, ++i);
+		insert_back(&newlist, i++);
 	printf("size: %d\n", list_size(newlist));
-	insert_at_position(&newlist, 123, 1);
+	printf("----------------LISTA ORIGINAL-----------------\n");
+	print_list(newlist);
+	printf("---------------------------------\n");
 	delete_first(&newlist);
 	print_list(newlist);
-	// delete_last(&newlist);
+	printf("---------------------------------\n");
+	delete_last(&newlist);
+	print_list(newlist);
+	printf("---------------------------------\n");
 	free_list(newlist);
 	return (0);
 }

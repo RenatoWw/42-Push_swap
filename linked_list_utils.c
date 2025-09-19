@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:51:10 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/16 18:21:23 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/18 19:41:27 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,8 @@ void	print_list(t_stack *head)
 	}
 	while (temp != NULL)
 	{
-		// printf("%d\n", temp->content);
+		printf("%d\n", temp->content);
 		temp = temp->next;
-	}
-	while (temp->prev != NULL)
-	{
-		// printf("%d\n", temp->content);
-		temp = temp->prev;
 	}
 }
 
