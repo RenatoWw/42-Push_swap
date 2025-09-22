@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:51:10 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/20 19:10:01 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/22 15:47:44 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,19 @@ void	print_list_reversed(t_stack *head)
 	}
 }
 
-void	free_list(t_stack *head)
+void	free_list(t_stack **head)
 {
 	t_stack	*temp;
 
-	if (!head)
+	if (!(*head))
 		return ;
-	while (head != NULL)
+	while (*head != NULL)
 	{
-		temp = head;
-		head = head->next;
+		temp = *head;
+		*head = (*head)->next;
 		free(temp);
 	}
+	*head = NULL;
 }
 
 int	list_size(t_stack *head)

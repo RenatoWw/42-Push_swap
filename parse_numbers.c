@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:03:16 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/22 13:56:11 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/22 15:31:42 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ long	ft_atol(const char *nptr)
 	num = 0;
 	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
 		nptr++;
-	while (*nptr == '-' || *nptr == '+')
+	if (*nptr == '-' || *nptr == '+')
 	{
 		if (*nptr == '-')
 			signal *= -1;
@@ -37,16 +37,20 @@ int	check_duplicates(char **str)
 	int	i;
 	int	j;
 
-	i = 0;
+	if (ft_strncmp(str[0], "./push_swap", 11) == 0)
+		i = 1;
+	else
+		i = 0;
 	while (str[i])
 	{
 		j = i + 1;
 		while (str[j])
 		{
-			if (ft_atoi(str[i]) == ft_atoi(str[j]))
+			if (ft_atol(str[i]) == ft_atol(str[j]))
 			{
 				printf("Error\n");
-				// free_split(str);
+				if (!(ft_strncmp(str[0], "./push_swap", 11) == 0))
+					free_split(str);
 				exit(1);
 			}
 			j++;
@@ -56,23 +60,55 @@ int	check_duplicates(char **str)
 	return (0);
 }
 
+int	check_number(char *str)
+{
+	int	i;
+
+	if (ft_atol(str) > 2147483647 || ft_atol(str) < -2147483648)
+		return (1);
+	i = 0;
+	while (str[i])
+	{
+		if (ft_atoi(str) == 0 && str[i] != '0')
+			return (1);
+		else if ((str[i] == '+' || str[i] == '-') && i != 0)
+			return (1);
+		else if (!(ft_isdigit(str[i])) && (str[i] != '-' && str[i] != '+'))
+			return (1);
+		else if ((str[i] == '-' || str[i] == '+') && ft_strlen(str) == 1)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+void	check_string(char **str)
+{
+	if (str[0] == NULL)
+	{
+		printf("Error\n");
+		free_split(str);
+		exit(1);
+	}
+}
+
 void	parse_numbers(char **str)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	check_string(str);
+	if (ft_strncmp(str[0], "./push_swap", 11) == 0)
+		i = 1;
+	else
+		i = 0;
 	while (str[i])
 	{
 		j = 0;
 		while (str[i][j])
 		{
-			if (!(ft_atol(str[i]) > -2147483648 && ft_atol(str[i]) < 2147483647)
-				|| (ft_atol(str[i]) > 2147483647
-					|| ft_atol(str[i]) < -2147483648))
+			if (check_number(str[i]) == 1)
 			{
-				if (str[i][j] == '-' && ft_atoi(str[i]) != 0)
-					break ;
 				printf("Error\n");
 				if (!(ft_strncmp(str[0], "./push_swap", 11) == 0))
 					free_split(str);
