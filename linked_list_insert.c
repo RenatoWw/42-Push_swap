@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 17:46:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/18 19:42:47 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/20 17:15:55 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	insert_at_position(t_stack **head, int content, int position)
 	int		size;
 
 	size = list_size(*head);
-	if (position > size)
+	if (position > size || position < 1)
 		return ;
-	else if (position == 0)
+	else if (position == 1)
 		insert_front(head, content);
 	else if (position == size)
 		insert_back(head, content);

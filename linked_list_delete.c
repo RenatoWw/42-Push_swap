@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 13:48:27 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/18 19:52:35 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/20 17:16:28 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,27 @@ void	delete_last(t_stack **head)
 		temp = temp->next;
 	temp->prev->next = NULL;
 	free(temp);
+}
+
+void	delete_at_position(t_stack **head, int position)
+{
+	t_stack	*temp;
+	int		size;
+
+	size = list_size(*head);
+	temp = *head;
+	if (position < 1)
+		return ;
+	else if (position == 1)
+		delete_first(head);
+	else if (position == size)
+		delete_last(head);
+	else
+	{
+		while (--position)
+			temp = temp->next;
+		temp->prev->next = temp->next;
+		temp->next->prev = temp->prev;
+		free(temp);
+	}
 }

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/22 13:48:37 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/09/20 20:04:31 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/09/20 20:05:03 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+void	free_split(char **line)
 {
-	t_stack	*stack_a;
+	int	i;
 
-	stack_a = NULL;
-	if (argc == 2)
-		stack_a = fill_stack(ft_split(argv[1], ' '));
-	else if (argc > 2)
-		stack_a = fill_stack(argv);
-	print_list(stack_a);
-	free_list(stack_a);
-	return (0);
+	i = 0;
+	while (line[i] != NULL)
+		free(line[i++]);
+	free(line);
 }
