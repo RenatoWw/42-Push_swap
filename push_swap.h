@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/22 15:47:09 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/22 17:36:47 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "includes/libft/libft.h"
+# include "includes/printf/ft_printf.h"
 # include <stdlib.h>
 # include <stdio.h>
 
@@ -36,9 +37,13 @@ void	insert_at_position(t_stack **head, int content, int position);
 void	delete_first(t_stack **head);
 void	delete_last(t_stack **head);
 void	delete_at_position(t_stack **head, int position);
-void	print_list(t_stack *head);
+void	print_list(t_stack *stack_a, t_stack *stack_b);
 void	print_list_reversed(t_stack *head);
-void	free_list(t_stack **head);
+void	free_list(t_stack **stack_a, t_stack **stack_b);
+void	fn_swap(t_stack **stack_a, t_stack **stack_b, char *instruction);
+void	fn_swap_ss(t_stack **stack_a, t_stack **stack_b);
+void	fn_push_a(t_stack **stack_a, t_stack **stack_b);
+void	fn_push_b(t_stack **stack_a, t_stack **stack_b);
 int		list_size(t_stack *head);
 int		check_duplicates(char **str);
 int		check_number(char *str);

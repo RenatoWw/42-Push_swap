@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:03:16 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/22 15:31:42 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/22 17:38:21 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_duplicates(char **str)
 		{
 			if (ft_atol(str[i]) == ft_atol(str[j]))
 			{
-				printf("Error\n");
+				ft_printf("Error\n");
 				if (!(ft_strncmp(str[0], "./push_swap", 11) == 0))
 					free_split(str);
 				exit(1);
@@ -86,7 +86,7 @@ void	check_string(char **str)
 {
 	if (str[0] == NULL)
 	{
-		printf("Error\n");
+		ft_printf("Error\n");
 		free_split(str);
 		exit(1);
 	}
@@ -109,7 +109,7 @@ void	parse_numbers(char **str)
 		{
 			if (check_number(str[i]) == 1)
 			{
-				printf("Error\n");
+				ft_printf("Error\n");
 				if (!(ft_strncmp(str[0], "./push_swap", 11) == 0))
 					free_split(str);
 				exit(1);

@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/22 17:40:07 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/07/13 14:20:32 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/07/15 14:56:46 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_isprint(int c)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc == 2)
-		stack_a = fill_stack(ft_split(argv[1], ' '));
-	else if (argc > 2)
-		stack_a = fill_stack(argv);
+	if (c >= 32 && c < 127)
+		return (1);
 	else
 		return (0);
-	fn_push_b(&stack_a, &stack_b);
-	fn_push_b(&stack_a, &stack_b);
-	fn_swap(&stack_a, &stack_b, "sb");
-	print_list(stack_a, stack_b);
-	free_list(&stack_a, &stack_b);
-	return (0);
 }

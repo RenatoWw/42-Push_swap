@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:51:10 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/22 15:47:44 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/22 17:38:03 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,33 @@ t_stack	*create_node(int content)
 	return (newnode);
 }
 
-void	print_list(t_stack *head)
+void	print_list(t_stack *stack_a, t_stack *stack_b)
 {
-	t_stack	*temp;
+	t_stack	*temp_a;
+	t_stack	*temp_b;
 
-	temp = head;
-	if (!temp)
+	temp_a = stack_a;
+	temp_b = stack_b;
+	while (1)
 	{
-		printf("Empty list.\n");
-		return ;
+		if (!temp_a)
+			ft_printf(" %c", ' ');
+		else
+		{
+			ft_printf(" %d", temp_a->content);
+			temp_a = temp_a->next;
+		}
+		if (!temp_b)
+			ft_printf("\t\t%c\n", ' ');
+		else
+		{
+			ft_printf("\t\t%d\n", temp_b->content);
+			temp_b = temp_b->next;
+		}
+		if (!temp_a && !temp_b)
+			break ;
 	}
-	while (temp != NULL)
-	{
-		printf("%d\n", temp->content);
-		temp = temp->next;
-	}
-	printf("---\n A\n");
+	ft_printf("---            ---\n A              B\n----------------------\n");
 }
 
 void	print_list_reversed(t_stack *head)
@@ -50,31 +61,38 @@ void	print_list_reversed(t_stack *head)
 	temp = head;
 	if (!temp)
 	{
-		printf("Empty list.\n");
+		ft_printf("Empty list.\n");
 		return ;
 	}
 	while (temp->next != NULL)
 		temp = temp->next;
 	while (temp->prev != NULL)
 	{
-		printf("%d\n", temp->content);
+		ft_printf(" %d\n", temp->content);
 		temp = temp->prev;
 	}
 }
 
-void	free_list(t_stack **head)
+void	free_list(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*temp;
 
-	if (!(*head))
+	if (!(*stack_a) && !(*stack_b))
 		return ;
-	while (*head != NULL)
+	while (*stack_a != NULL)
 	{
-		temp = *head;
-		*head = (*head)->next;
+		temp = *stack_a;
+		*stack_a = (*stack_a)->next;
 		free(temp);
 	}
-	*head = NULL;
+	*stack_a = NULL;
+	while (*stack_b != NULL)
+	{
+		temp = *stack_b;
+		*stack_b = (*stack_b)->next;
+		free(temp);
+	}
+	*stack_b = NULL;
 }
 
 int	list_size(t_stack *head)

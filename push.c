@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/22 17:40:07 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/09/22 16:22:32 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/09/22 17:38:38 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+void	fn_push_a(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	ft_printf("pa\n");
+	if (!(*stack_b))
+		return ;
+	insert_front(stack_a, (*stack_b)->content);
+	delete_first(stack_b);
+}
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc == 2)
-		stack_a = fill_stack(ft_split(argv[1], ' '));
-	else if (argc > 2)
-		stack_a = fill_stack(argv);
-	else
-		return (0);
-	fn_push_b(&stack_a, &stack_b);
-	fn_push_b(&stack_a, &stack_b);
-	fn_swap(&stack_a, &stack_b, "sb");
-	print_list(stack_a, stack_b);
-	free_list(&stack_a, &stack_b);
-	return (0);
+void	fn_push_b(t_stack **stack_a, t_stack **stack_b)
+{
+	ft_printf("pb\n");
+	if (!(*stack_a))
+		return ;
+	insert_front(stack_b, (*stack_a)->content);
+	delete_first(stack_a);
 }
