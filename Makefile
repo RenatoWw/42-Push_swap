@@ -15,6 +15,7 @@ SRCS = push_swap.c \
 		free.c \
 		swap.c \
 		push.c \
+		rotate.c \
 
 OBJ_DIR = objs/
 

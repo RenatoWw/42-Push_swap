@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/22 17:36:47 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/22 21:13:01 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "includes/libft/libft.h"
 # include "includes/printf/ft_printf.h"
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -26,11 +25,15 @@ typedef struct s_stack
 	struct s_stack	*next;
 }		t_stack;
 
-t_stack	*create_node(int content);
-t_stack	*fill_stack(char **numbers);
 void	parse_numbers(char **str);
 void	free_split(char **line);
 void	check_string(char **str);
+int		check_duplicates(char **str);
+int		check_number(char *str);
+long	ft_atol(const char *nptr);
+
+t_stack	*create_node(int content);
+t_stack	*fill_stack(char **numbers);
 void	insert_front(t_stack **head, int content);
 void	insert_back(t_stack **head, int content);
 void	insert_at_position(t_stack **head, int content, int position);
@@ -40,14 +43,12 @@ void	delete_at_position(t_stack **head, int position);
 void	print_list(t_stack *stack_a, t_stack *stack_b);
 void	print_list_reversed(t_stack *head);
 void	free_list(t_stack **stack_a, t_stack **stack_b);
+int		list_size(t_stack *head);
+
 void	fn_swap(t_stack **stack_a, t_stack **stack_b, char *instruction);
 void	fn_swap_ss(t_stack **stack_a, t_stack **stack_b);
 void	fn_push_a(t_stack **stack_a, t_stack **stack_b);
 void	fn_push_b(t_stack **stack_a, t_stack **stack_b);
-int		list_size(t_stack *head);
-int		check_duplicates(char **str);
-int		check_number(char *str);
-long	ft_atol(const char *nptr);
-
+void	fn_rotate(t_stack **stack_a, t_stack **stack_b, char *instruction);
 
 #endif
