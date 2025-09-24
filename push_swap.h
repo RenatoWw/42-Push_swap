@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/22 21:13:01 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/23 19:17:10 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,15 @@ void	print_list(t_stack *stack_a, t_stack *stack_b);
 void	print_list_reversed(t_stack *head);
 void	free_list(t_stack **stack_a, t_stack **stack_b);
 int		list_size(t_stack *head);
+void	fill_index(t_stack **stack);
 
 void	fn_swap(t_stack **stack_a, t_stack **stack_b, char *instruction);
 void	fn_swap_ss(t_stack **stack_a, t_stack **stack_b);
 void	fn_push_a(t_stack **stack_a, t_stack **stack_b);
 void	fn_push_b(t_stack **stack_a, t_stack **stack_b);
 void	fn_rotate(t_stack **stack_a, t_stack **stack_b, char *instruction);
+void	fn_reverse_rotate(t_stack **stck_a, t_stack **stck_b, char *operation);
+
+void	three_elem_sort(t_stack **stack);
 
 #endif

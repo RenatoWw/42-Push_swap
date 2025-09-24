@@ -7,22 +7,24 @@ PRINTF = includes/printf/
 PRINTF_A = includes/printf/libftprintf.a
 
 SRCS = push_swap.c \
-		linked_list_utils.c \
-		linked_list_delete.c \
-		linked_list_insert.c \
-		parse_numbers.c \
+		list_functions/linked_list_utils.c \
+		list_functions/linked_list_delete.c \
+		list_functions/linked_list_insert.c \
+		parser.c \
 		fill_stack.c \
 		free.c \
-		swap.c \
-		push.c \
-		rotate.c \
+		operations/swap.c \
+		operations/push.c \
+		operations/rotate.c \
+		operations/reverse_rotate.c \
+		algorithm/three_elem_sort.c \
 
 OBJ_DIR = objs/
 
 OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 
 $(OBJ_DIR)%.o: %.c
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
