@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/23 19:17:10 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/25 14:33:52 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct s_stack
 
 void	parse_numbers(char **str);
 void	free_split(char **line);
-void	check_string(char **str);
+char	**parse_string(char **str);
 int		check_duplicates(char **str);
 int		check_number(char *str);
 long	ft_atol(const char *nptr);
@@ -54,5 +54,7 @@ void	fn_rotate(t_stack **stack_a, t_stack **stack_b, char *instruction);
 void	fn_reverse_rotate(t_stack **stck_a, t_stack **stck_b, char *operation);
 
 void	three_elem_sort(t_stack **stack);
+void	four_elem_sort(t_stack **stack_a, t_stack **stack_b);
+void	sort_list(t_stack **stack_a, t_stack **stack_b);
 
 #endif

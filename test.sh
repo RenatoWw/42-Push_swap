@@ -83,6 +83,7 @@ echo -e "${YELLOW}--- I. Casos Válidos (devem ser aceitos) ---${RESET}"
 run_test "Simples Multi-Arg" OK 1 2 3
 run_test "Simples Single-Arg" OK "1 2 3"
 run_test "Negativos e Zero" OK -1 0 1 2 -3
+run_test "Multi-Arg e Single-Arg" OK 1 2 3 "4 5 6" 7 8
 # ... (cole o resto dos testes do script anterior aqui) ...
 echo -e "\n${YELLOW}--- II. Casos de ERRO de Sintaxe (devem ser rejeitados) ---${RESET}"
 run_test "Letra no meio de multi-arg" ERROR 1 a 2

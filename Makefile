@@ -18,6 +18,8 @@ SRCS = push_swap.c \
 		operations/rotate.c \
 		operations/reverse_rotate.c \
 		algorithm/three_elem_sort.c \
+		algorithm/four_elem_sort.c \
+		algorithm/sort.c \
 
 OBJ_DIR = objs/
 
@@ -41,12 +43,12 @@ $(PRINTF_A):
 clean:
 	$(MAKE) -C $(LIBFT) clean
 	$(MAKE) -C $(PRINTF) clean
-	rm -rf $(OBJ_dir)
+	rm -r $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT) fclean
 	$(MAKE) -C $(PRINTF) fclean
-	rm -rf $(OBJ_DIR)
 	rm -f $(NAME)
 
 re: fclean all

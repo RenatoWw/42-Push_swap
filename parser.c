@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:03:16 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/23 18:30:15 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/25 14:31:58 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,25 @@ int	check_number(char *str)
 	return (0);
 }
 
-void	check_string(char **str)
+char	**parse_string(char **str)
 {
+	// int		i;
+
+	// i = 0;
 	if (str[0] == NULL)
 	{
 		ft_printf("Error\n");
 		free_split(str);
 		exit(1);
 	}
+	// while (str[i])
+	// {
+	// 	if (ft_strncmp(str[i], "./push_swap", 11) == 0)
+	// 		i++;
+	// 	str = ft_split(str[i], ' ');
+	// 	i++;
+	// }
+	return (str);
 }
 
 void	parse_numbers(char **str)
@@ -97,7 +108,7 @@ void	parse_numbers(char **str)
 	int	i;
 	int	j;
 
-	check_string(str);
+	str = parse_string(str);
 	if (ft_strncmp(str[0], "./push_swap", 11) == 0)
 		i = 1;
 	else
