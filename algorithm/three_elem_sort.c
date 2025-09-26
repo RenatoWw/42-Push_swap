@@ -6,14 +6,13 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:52:54 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/25 19:55:06 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:50:13 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-int	two_operations(t_stack *temp, t_stack **stack)
+static int	two_operations(t_stack *temp, t_stack **stack)
 {
 	if (temp->content > temp->next->content
 		&& temp->next->content > temp->next->next->content)
@@ -36,7 +35,7 @@ void	three_elem_sort(t_stack **stack)
 {
 	t_stack	*temp;
 
-	if (list_size(*stack) != 3)
+	if (list_size(*stack) != 3 || is_sorted(stack) == 0)
 		return ;
 	temp = *stack;
 	if (two_operations(temp, stack) == 1)

@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/25 14:33:52 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:49:40 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	delete_at_position(t_stack **head, int position);
 void	print_list(t_stack *stack_a, t_stack *stack_b);
 void	print_list_reversed(t_stack *head);
 void	free_list(t_stack **stack_a, t_stack **stack_b);
-int		list_size(t_stack *head);
 void	fill_index(t_stack **stack);
+int		list_size(t_stack *head);
 
 void	fn_swap(t_stack **stack_a, t_stack **stack_b, char *instruction);
 void	fn_swap_ss(t_stack **stack_a, t_stack **stack_b);
@@ -55,6 +55,8 @@ void	fn_reverse_rotate(t_stack **stck_a, t_stack **stck_b, char *operation);
 
 void	three_elem_sort(t_stack **stack);
 void	four_elem_sort(t_stack **stack_a, t_stack **stack_b);
+void	five_elem_sort(t_stack **stack_a, t_stack **stack_b);
 void	sort_list(t_stack **stack_a, t_stack **stack_b);
+int		is_sorted(t_stack **stack);
 
 #endif

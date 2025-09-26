@@ -6,13 +6,13 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 19:23:02 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/25 20:12:57 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:51:00 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	two_first(t_stack *temp, t_stack **stack_a, t_stack **stack_b)
+static int	two_first(t_stack *temp, t_stack **stack_a, t_stack **stack_b)
 {
 	if (temp->index == 1)
 	{
@@ -37,7 +37,7 @@ void	four_elem_sort(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp;
 
 	temp = *stack_a;
-	if (list_size(*stack_a) != 4)
+	if (list_size(*stack_a) != 4 || is_sorted(stack_a) == 0)
 		return ;
 	if (two_first(temp, stack_a, stack_b) == 1)
 		return ;
