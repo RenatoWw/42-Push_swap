@@ -6,41 +6,51 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 20:43:49 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/25 21:11:54 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:46:14 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	five_elem_sort(t_stack **stack_a, t_stack **stack_b)
+void	get_smallest(t_stack *stack)
 {
 	t_stack	*temp;
-	int		i;
+	int		smallest;
 
-	temp = *stack_b;
-	temp = *stack_a;
-	i = 1;
-	if (temp->index == 5)
+	temp = stack;
+	smallest = stack->index;
+	printf("smallest: %d\n", smallest);
+}
+
+void	five_elem_sort(t_stack **stack_a, t_stack **stack_b)
+{
+	t_stack	*temp_a;
+	t_stack	*temp_b;
+	int		medium;
+	int		biggest;
+	int		smallest;
+
+	medium = (*stack_a)->next->next->index;
+	temp_a = *stack_a;
+	while (list_size(*stack_a) != 3)
 	{
-		fn_push_b(stack_a, stack_b);
-		four_elem_sort(stack_a, stack_b);
+		if (temp_a->index >= medium)
+			fn_rotate(stack_a, stack_b, "ra");	
+		else if (temp_a->index < medium)
+			fn_push_b(stack_a, stack_b);
+	}
+	three_elem_sort(stack_a);
+	temp_b = *stack_b;
+	biggest = temp_b->index;
+	smallest = 0;
+	while (temp_a != NULL)
+	{
+		if (temp_b->index < temp_a->index)
+			smallest++;
+		temp_a = temp_a->next;
+	}
+	if (smallest == 0)
 		fn_push_a(stack_a, stack_b);
-		fn_rotate(stack_a, stack_b, "ra");
-	}
-	else if (temp->next->index == 5)
-	{
-		fn_swap(stack_a, stack_b, "sa");
-		fn_push_b(stack_a, stack_b);
-		// four_elem_sort(stack_a, stack_b);
-		// fn_push_a(stack_a, stack_b);
-		// fn_rotate(stack_a, stack_b, "ra");
-	}
-	// if (i == 1)
-	// {
-	// 	fn_push_b(stack_a, stack_b);
-	// 	four_elem_sort(stack_a, stack_b);
-	// 	fn_push_a(stack_a, stack_b);
-		
-	// }
-	// printf("i: %d\n", i);
+	// printf("%d, %d\n", temp_b->index, temp_a->index);
+	get_smallest(*stack_a);
 }
