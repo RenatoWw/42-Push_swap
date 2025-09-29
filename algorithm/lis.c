@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   lis.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/29 17:18:13 by ranhaia-         ###   ########.fr       */
+/*   Created: 2025/09/29 15:14:28 by ranhaia-          #+#    #+#             */
+/*   Updated: 2025/09/29 17:48:07 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+int	get_lis_length(t_stack **stack)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*tail;
+	t_stack	*temp2;
+	int		size;
+	int		*lis;
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (argc == 1)
-		return (0);
-	else if (argc > 2)
-		stack_a = fill_stack(argv);
-	else if (argc == 2)
-		stack_a = fill_stack(ft_split(argv[1], ' '));
-	// sort_list(&stack_a, &stack_b);
-	// print_list(stack_a, stack_b);
-	print_list(stack_a, stack_b);
-	get_lis_length(&stack_a);
-	free_list(&stack_a, &stack_b);
-	return (0);
+	size = list_size(*stack);
+	lis = malloc(size * sizeof(int));
+	temp2 = NULL;
+	tail = *stack;
+	while (tail->next != NULL)
+		tail = tail->next;
+	while (tail != NULL)
+	{
+		temp2 = tail;
+		while (temp2 != NULL)
+		{
+			printf("temp: %d\n", temp2->content);
+			temp2 = temp2->next;
+		}
+		printf("\n");
+		tail = tail->next;
+	}	
+	return (1);
 }

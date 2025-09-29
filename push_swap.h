@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/25 20:49:40 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:22:26 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ typedef struct s_stack
 {
 	int				content;
 	int				index;
+	int				lis_len;
 	struct s_stack	*prev;
 	struct s_stack	*next;
+	struct s_stack	*next_in_lis;
 }		t_stack;
 
 void	parse_numbers(char **str);
@@ -55,8 +57,8 @@ void	fn_reverse_rotate(t_stack **stck_a, t_stack **stck_b, char *operation);
 
 void	three_elem_sort(t_stack **stack);
 void	four_elem_sort(t_stack **stack_a, t_stack **stack_b);
-void	five_elem_sort(t_stack **stack_a, t_stack **stack_b);
 void	sort_list(t_stack **stack_a, t_stack **stack_b);
 int		is_sorted(t_stack **stack);
+int		get_lis_length(t_stack **stack);
 
 #endif

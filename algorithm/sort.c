@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 14:32:26 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/25 20:45:17 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/29 15:22:13 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	sort_list(t_stack **stack_a, t_stack **stack_b)
 		three_elem_sort(stack_a);
 	else if (size == 4)
 		four_elem_sort(stack_a, stack_b);
-	else if (size == 5)
-		five_elem_sort(stack_a, stack_b);
+	// else if (size == 5)
+	// 	five_elem_sort(stack_a, stack_b);
 	else
 		return ;
 }

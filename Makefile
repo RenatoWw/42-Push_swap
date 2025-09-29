@@ -19,7 +19,7 @@ SRCS = push_swap.c \
 		operations/reverse_rotate.c \
 		algorithm/three_elem_sort.c \
 		algorithm/four_elem_sort.c \
-		algorithm/five_elem_sort.c \
+		algorithm/lis.c \
 		algorithm/sort.c \
 
 OBJ_DIR = objs/
