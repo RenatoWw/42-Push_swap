@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/29 17:22:26 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/30 16:53:19 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*next_in_lis;
 }		t_stack;
+
+typedef struct s_cost
+{
+	int		moves;
+	char	*instruction;
+}		t_cost;
 
 void	parse_numbers(char **str);
 void	free_split(char **line);
@@ -60,5 +66,8 @@ void	four_elem_sort(t_stack **stack_a, t_stack **stack_b);
 void	sort_list(t_stack **stack_a, t_stack **stack_b);
 int		is_sorted(t_stack **stack);
 int		get_lis_length(t_stack **stack);
+void	turk_sort(t_stack **stack_a, t_stack **stack_b);
+int		get_position(t_stack *stack, int value);
+t_cost	rotation_cost(int stack_size, int position);
 
 #endif

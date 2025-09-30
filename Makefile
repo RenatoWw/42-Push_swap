@@ -20,6 +20,8 @@ SRCS = push_swap.c \
 		algorithm/three_elem_sort.c \
 		algorithm/four_elem_sort.c \
 		algorithm/lis.c \
+		algorithm/turk.c \
+		algorithm/turk_utils.c \
 		algorithm/sort.c \
 
 OBJ_DIR = objs/
