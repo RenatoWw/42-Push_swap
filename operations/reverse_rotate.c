@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:04:22 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/23 17:07:01 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/01 14:08:41 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	rotate_to_front(t_stack **stack)
 	t_stack	*first;
 	t_stack	*last;
 
-	if (list_size(*stack) < 2)
+	if (!(*stack) || !stack || !(*stack)->next)
 		return ;
 	first = *stack;
 	last = *stack;
@@ -26,6 +26,8 @@ static void	rotate_to_front(t_stack **stack)
 	last->prev->next = NULL;
 	*stack = last;
 	(*stack)->next = first;
+	(*stack)->prev = NULL;
+	(*stack)->next->prev = last;
 }
 
 void	fn_reverse_rotate(t_stack **stck_a, t_stack **stck_b, char *operation)

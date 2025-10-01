@@ -6,34 +6,29 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:48:34 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/30 21:09:15 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:43:20 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_target_in_a(t_stack *stack_a, int *b_value)
+void	normalize_stack_a(t_stack **stack)
 {
 	t_stack	*temp;
-	int		current_node;
-	int		possible_target;
-	int		minimum;
+	t_cost	cost;
+	int		position;
 
-	possible_target = 2147483647;
-	temp = stack_a;
-	if (!b_value)
-		return (-1);
-	minimum = minimum_number_in_stack(stack_a);
-	while (temp != NULL)
+	temp = *stack;
+	position = get_position(temp, minimum_number_in_stack(temp));
+	cost = rotation_cost(list_size(temp), position);
+	while (cost.moves > 0)
 	{
-		current_node = temp->content;
-		if (current_node > *b_value && current_node < possible_target)
-			possible_target = current_node;
-		temp = temp->next;
+		if (ft_strncmp("ra", cost.instruction, 4) == 0)
+			fn_rotate(stack, NULL, "ra");
+		if (ft_strncmp("rra", cost.instruction, 4) == 0)
+			fn_reverse_rotate(stack, NULL, "rra");
+		cost.moves--;
 	}
-	if (possible_target == 2147483647)
-		return (minimum);
-	return (possible_target);
 }
 
 int	get_position(t_stack *stack, int content)
@@ -53,30 +48,34 @@ int	get_position(t_stack *stack, int content)
 	return (i);
 }
 
-t_cost	rotation_cost(int stack_size, int position)
+int	maximum_number_in_stack(t_stack *stack)
 {
-	int		ra_cost;
-	int		rra_cost;
-	t_cost	cost;
+	t_stack	*temp;
+	int		maximum;
 
-	if (position > stack_size)
+	maximum = 0;
+	temp = stack;
+	while (temp != NULL)
 	{
-		cost.moves = -1;
-		cost.instruction = "";
-		return (cost);
+		if (temp->content > maximum)
+			maximum = temp->content;
+		temp = temp->next;
 	}
-	ra_cost = position - 1;
-	rra_cost = stack_size - (position - 1);
-	if (ra_cost < rra_cost)
+	return (maximum);
+}
+
+int	minimum_number_in_stack(t_stack *stack)
+{
+	t_stack	*temp;
+	int		minimum;
+
+	minimum = maximum_number_in_stack(stack);
+	temp = stack;
+	while (temp != NULL)
 	{
-		cost.moves = ra_cost;
-		cost.instruction = "ra";
-		return (cost);
+		if (temp->content < minimum)
+			minimum = temp->content;
+		temp = temp->next;
 	}
-	else
-	{
-		cost.moves = rra_cost;
-		cost.instruction = "rra";
-		return (cost);
-	}
+	return (minimum);
 }

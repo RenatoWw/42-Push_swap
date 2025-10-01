@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/30 21:07:42 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:42:04 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	delete_first(t_stack **head);
 void	delete_last(t_stack **head);
 void	delete_at_position(t_stack **head, int position);
 void	print_list(t_stack *stack_a, t_stack *stack_b);
-void	print_list_reversed(t_stack *head);
 void	free_list(t_stack **stack_a, t_stack **stack_b);
 void	fill_index(t_stack **stack);
 int		list_size(t_stack *head);
@@ -72,4 +71,6 @@ t_cost	rotation_cost(int stack_size, int position);
 int		find_target_in_a(t_stack *stack_a, int *b_value);
 int		maximum_number_in_stack(t_stack *stack);
 int		minimum_number_in_stack(t_stack *stack);
+void	normalize_stack_a(t_stack **stack);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:51:10 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/23 17:03:29 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:42:02 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +52,6 @@ void	print_list(t_stack *stack_a, t_stack *stack_b)
 			break ;
 	}
 	ft_printf("---            ---\n A              B\n----------------------\n");
-}
-
-void	print_list_reversed(t_stack *head)
-{
-	t_stack	*temp;
-
-	temp = head;
-	if (!temp)
-	{
-		ft_printf("Empty list.\n");
-		return ;
-	}
-	while (temp->next != NULL)
-		temp = temp->next;
-	while (temp->prev != NULL)
-	{
-		ft_printf(" %d\n", temp->content);
-		temp = temp->prev;
-	}
 }
 
 void	free_list(t_stack **stack_a, t_stack **stack_b)

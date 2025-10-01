@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 14:32:26 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/30 12:03:33 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:51:23 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	sort_list(t_stack **stack_a, t_stack **stack_b)
 
 	size = list_size(*stack_a);
 	if (is_sorted(stack_a) == 0)
-		ft_printf("OK\n");
+		return ;
 	else if (size == 2 && (*stack_a)->index > (*stack_a)->next->index)
 		fn_swap(stack_a, NULL, "sa");
 	else if (size == 3)
