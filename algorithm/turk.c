@@ -6,13 +6,13 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 12:02:32 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/30 12:36:21 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/30 21:07:29 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	maximum_number_in_stack(t_stack *stack)
+int	maximum_number_in_stack(t_stack *stack)
 {
 	t_stack	*temp;
 	int		maximum;
@@ -28,7 +28,7 @@ static int	maximum_number_in_stack(t_stack *stack)
 	return (maximum);
 }
 
-static int	minimum_number_in_stack(t_stack *stack)
+int	minimum_number_in_stack(t_stack *stack)
 {
 	t_stack	*temp;
 	int		minimum;

@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/30 16:53:19 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/30 21:07:42 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ int		get_lis_length(t_stack **stack);
 void	turk_sort(t_stack **stack_a, t_stack **stack_b);
 int		get_position(t_stack *stack, int value);
 t_cost	rotation_cost(int stack_size, int position);
-
+int		find_target_in_a(t_stack *stack_a, int *b_value);
+int		maximum_number_in_stack(t_stack *stack);
+int		minimum_number_in_stack(t_stack *stack);
 #endif

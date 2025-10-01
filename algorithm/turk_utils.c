@@ -6,34 +6,51 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:48:34 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/30 17:19:04 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/09/30 21:09:15 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_target_in_b(t_stack *stack_b, int a_value)
+int	find_target_in_a(t_stack *stack_a, int *b_value)
 {
 	t_stack	*temp;
-	int		bigger_betw
+	int		current_node;
+	int		possible_target;
+	int		minimum;
 
+	possible_target = 2147483647;
+	temp = stack_a;
+	if (!b_value)
+		return (-1);
+	minimum = minimum_number_in_stack(stack_a);
 	while (temp != NULL)
 	{
+		current_node = temp->content;
+		if (current_node > *b_value && current_node < possible_target)
+			possible_target = current_node;
 		temp = temp->next;
 	}
-	return (0);
+	if (possible_target == 2147483647)
+		return (minimum);
+	return (possible_target);
 }
 
-int	get_position(t_stack *stack, int value)
+int	get_position(t_stack *stack, int content)
 {
 	t_stack	*temp;
+	int		i;
 
-	if (value > list_size(stack))
-		return (-1);
 	temp = stack;
-	while (--value)
+	i = 1;
+	while (temp != NULL)
+	{
+		if (temp->content == content)
+			break ;
 		temp = temp->next;
-	return (temp->index);
+		i++;
+	}
+	return (i);
 }
 
 t_cost	rotation_cost(int stack_size, int position)
