@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:48:34 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/01 16:43:20 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/01 20:56:43 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,16 @@ int	minimum_number_in_stack(t_stack *stack)
 		temp = temp->next;
 	}
 	return (minimum);
+}
+
+void	turner_calculator(t_stack **stack_a, t_cost cost)
+{
+	while (cost.moves > 0)
+	{
+		if (ft_strncmp("ra", cost.instruction, 4) == 0)
+			fn_rotate(stack_a, NULL, "ra");
+		if (ft_strncmp("rra", cost.instruction, 4) == 0)
+			fn_reverse_rotate(stack_a, NULL, "rra");
+		cost.moves--;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/01 16:48:29 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/01 21:23:35 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@
 // após achar ele coloco na posição correta
 // ----------------- FAZER
 
+// calcular custo da B para a A
+// fazer a LIS na A
+
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
@@ -56,6 +60,12 @@ int	main(int argc, char *argv[])
 	else if (argc == 2)
 		stack_a = fill_stack(ft_split(argv[1], ' '));
 	sort_list(&stack_a, &stack_b);
+	// fn_push_b(&stack_a, &stack_b);
+	// fn_push_b(&stack_a, &stack_b);
+	// fn_push_b(&stack_a, &stack_b);
+	int	target;
+	target = find_target_in_b(stack_b, &stack_a->content);
+	// printf("target: %d\n", target);
 	// print_list(stack_a, stack_b);
 	free_list(&stack_a, &stack_b);
 	return (0);
