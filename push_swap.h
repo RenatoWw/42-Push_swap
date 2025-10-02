@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/01 20:56:50 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:09:39 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ typedef struct s_stack
 
 typedef struct s_cost
 {
+	int		target_in_a;
+	int		position_b;
+	int		cost_b;
+	int		position_a;
+	int		cost_a;
+	int		total_cost;
 	int		moves;
 	char	*instruction;
 }		t_cost;
@@ -60,13 +66,13 @@ void	fn_push_b(t_stack **stack_a, t_stack **stack_b);
 void	fn_rotate(t_stack **stack_a, t_stack **stack_b, char *instruction);
 void	fn_reverse_rotate(t_stack **stck_a, t_stack **stck_b, char *operation);
 
-t_cost	rotation_cost(int stack_size, int position);
+t_cost	rotation_cost(int stack_size, int position, char stack_id);
 void	three_elem_sort(t_stack **stack);
 void	four_elem_sort(t_stack **stack_a, t_stack **stack_b);
 void	sort_list(t_stack **stack_a, t_stack **stack_b);
 void	turk_sort(t_stack **stack_a, t_stack **stack_b);
 void	normalize_stack_a(t_stack **stack);
-void	turner_calculator(t_stack **stack_a, t_cost cost);
+void	rotate_calculator(t_stack **stack_a, t_cost cost);
 int		is_sorted(t_stack **stack);
 int		get_lis_length(t_stack **stack);
 int		get_position(t_stack *stack, int value);

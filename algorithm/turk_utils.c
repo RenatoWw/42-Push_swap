@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:48:34 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/01 20:56:43 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:11:06 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	normalize_stack_a(t_stack **stack)
 
 	temp = *stack;
 	position = get_position(temp, minimum_number_in_stack(temp));
-	cost = rotation_cost(list_size(temp), position);
+	cost = rotation_cost(list_size(temp), position, 'A');
 	while (cost.moves > 0)
 	{
 		if (ft_strncmp("ra", cost.instruction, 4) == 0)
@@ -80,7 +80,7 @@ int	minimum_number_in_stack(t_stack *stack)
 	return (minimum);
 }
 
-void	turner_calculator(t_stack **stack_a, t_cost cost)
+void	rotate_calculator(t_stack **stack_a, t_cost cost)
 {
 	while (cost.moves > 0)
 	{

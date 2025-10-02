@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 12:02:32 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/01 21:07:11 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/02 16:53:13 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,77 +60,76 @@ int	find_target_in_b(t_stack *stack_b, int *a_value)
 	return (possible_target);
 }
 
-t_cost	rotation_cost(int stack_size, int position)
+void	stack_to_rotate(t_cost *cost, char stack_id, int rr_cost, int rrr_cost)
 {
-	int		ra_cost;
-	int		rra_cost;
+	if (stack_id == 'A' && cost->moves == rr_cost)
+	{
+		cost->instruction = "ra";
+		cost->cost_a = cost->moves;
+	}
+	else if (stack_id == 'A' && cost->moves == rrr_cost)
+	{
+		cost->instruction = "rra";
+		cost->cost_a = cost->moves;
+	}
+	else if (stack_id == 'B' && cost->moves == rr_cost)
+	{
+		cost->instruction = "rb";
+		cost->cost_b = cost->moves;
+	}
+	else if (stack_id == 'B' && cost->moves == rrr_cost)
+	{
+		cost->instruction = "rrb";
+		cost->cost_b = cost->moves;
+	}
+}
+
+t_cost	rotation_cost(int stack_size, int position, char stack_id)
+{
+	int		rr_cost;
+	int		rrr_cost;
 	t_cost	cost;
 
 	if (position > stack_size)
 	{
 		cost.moves = -1;
-		cost.instruction = "";
 		return (cost);
 	}
-	ra_cost = position - 1;
-	rra_cost = stack_size - (position - 1);
-	if (ra_cost < rra_cost)
-	{
-		cost.moves = ra_cost;
-		cost.instruction = "ra";
-		return (cost);
-	}
+	rr_cost = position - 1;
+	rrr_cost = stack_size - (position - 1);
+	if (rr_cost < rrr_cost)
+		cost.moves = rr_cost;
 	else
-	{
-		cost.moves = rra_cost;
-		cost.instruction = "rra";
-		return (cost);
-	}
+		cost.moves = rrr_cost;
+	stack_to_rotate(&cost, stack_id, rr_cost, rrr_cost);
+	return (cost);
 }
 
 void	clear_stack_a(t_stack **stack_a, t_stack **stack_b)
 {
-	int		target;
-	int		position;
-	t_cost	cost;
-
-	// fn_push_b(stack_a, stack_b);
 	while (list_size(*stack_a) > 3)
-	{
-		target = find_target_in_b(*stack_b, &(*stack_a)->content);
-		position = get_position(*stack_b, target);
-		cost = rotation_cost(list_size(*stack_b), position);
-		// turner_calculator(stack_b, cost);
-		while (cost.moves > 0)
-		{
-			if (ft_strncmp("ra", cost.instruction, 4) == 0)
-				fn_rotate(NULL, stack_b, "rb");
-			if (ft_strncmp("rra", cost.instruction, 4) == 0)
-				fn_reverse_rotate(NULL, stack_b, "rrb");
-			cost.moves--;
-		}
 		fn_push_b(stack_a, stack_b);
-	}
 	three_elem_sort(stack_a);
 }
+
+// void	cost_calculator(t_stack *stack_a, t_stack *stack_b)
+// {
+	
+// }
 
 void	turk_sort(t_stack **stack_a, t_stack **stack_b)
 {
 	int		target;
 	int		position;
 	t_cost	cost;
-	t_stack	*node;
 
-	node = *stack_a;
-	// usar a mesma lógica para empurrar os elementos da A para a B
-	// primeiro empurrar dois, parar somente quando tiver apenas três elementos na A
 	clear_stack_a(stack_a, stack_b);
 	while (list_size(*stack_b) > 0)
 	{
 		target = find_target_in_a(*stack_a, &(*stack_b)->content);
 		position = get_position(*stack_a, target);
-		cost = rotation_cost(list_size(*stack_a), position);
-		turner_calculator(stack_a, cost);
+		cost = rotation_cost(list_size(*stack_a), position, 'A');
+		rotate_calculator(stack_a, cost);
 		fn_push_a(stack_a, stack_b);
 	}
 	normalize_stack_a(stack_a);
