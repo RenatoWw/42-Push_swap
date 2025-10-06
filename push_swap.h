@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 16:40:26 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:04:42 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ typedef struct s_sheet
 	int		target_in_a;
 	int		position_a;
 	int		position_b;
+	int		moves_a;
+	int		moves_b;
+	char	*instruction_a;
+	char	*instruction_b;
 }	t_sheet;
 
 typedef struct s_cost
@@ -46,7 +50,6 @@ typedef struct s_cost
 	int		total_cost;
 	int		moves;
 	char	*instruction;
-
 }		t_cost;
 
 void	parse_numbers(char **str);
@@ -77,7 +80,7 @@ void	fn_rotate(t_stack **stack_a, t_stack **stack_b, char *instruction);
 void	fn_reverse_rotate(t_stack **stck_a, t_stack **stck_b, char *operation);
 
 t_cost	*rotation_cost(int stack_size, t_cost *cost, char stack_id);
-t_sheet	find_cheapest_move(t_stack *stack_a, t_stack *stack_b);
+t_sheet	find_cheapest_move(t_stack *stack_a, t_stack *stack_b, t_cost *cost);
 void	three_elem_sort(t_stack **stack);
 void	four_elem_sort(t_stack **stack_a, t_stack **stack_b);
 void	sort_list(t_stack **stack_a, t_stack **stack_b);

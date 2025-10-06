@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 17:25:15 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:14:02 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,41 +45,76 @@
 // calcular custo da B para a A
 // fazer a LIS na A
 
-
-// printf("pos a: %d\npos b: %d\n", sheet.position_a, sheet.position_b);
-// printf("cheapest cost: %d\n", sheet.cheapest_cost);
-// printf("node_to_move: %d\n", sheet.target_node_to_move);
-// printf("target_in_a: %d\n", sheet.target_in_a);
-
-void	rotator(t_stack **stack_a, t_stack **stack_b, t_sheet sheet)
+void	get_move_plan(t_sheet *sheet, int size_a, int size_b)
 {
-		while (sheet.position_a > 1)
-		{
-			fn_rotate(stack_a, stack_b, "ra");
-			sheet.position_a--;
-	
-		}
-		while (sheet.position_b > 1)
-		{
+	int	rr_cost;
+	int	rrr_cost;
+
+	rr_cost = sheet->position_a - 1;
+	rrr_cost = size_a - (sheet->position_a - 1);
+	if (rr_cost < rrr_cost)
+	{
+		sheet->moves_a = rr_cost;
+		sheet->instruction_a = "ra";
+	}
+	else
+	{
+		sheet->moves_a = rrr_cost;
+		sheet->instruction_a = "rra";
+	}
+	rr_cost = sheet->position_b - 1;
+	rrr_cost = size_b - (sheet->position_b - 1);
+	if (rr_cost < rrr_cost)
+	{
+		sheet->moves_b = rr_cost;
+		sheet->instruction_b = "rb";
+	}
+	else
+	{
+		sheet->moves_b = rrr_cost;
+		sheet->instruction_b = "rrb";
+	}
+}
+
+void	execute_movements(t_stack **stack_a, t_stack **stack_b, t_sheet sheet)
+{
+	while (sheet.moves_a > 0)
+	{
+		if (ft_strncmp("ra", sheet.instruction_a, 4) == 0)
+			fn_rotate(stack_a, NULL, "ra");
+		if (ft_strncmp("rra", sheet.instruction_a, 4) == 0)
+			fn_reverse_rotate(stack_a, NULL, "rra");
+		sheet.moves_a--;
+	}
+	while (sheet.moves_b > 0)
+	{
+		if (ft_strncmp("rb", sheet.instruction_b, 4) == 0)
 			fn_rotate(stack_a, stack_b, "rb");
-			sheet.position_b--;
-		}
+		if (ft_strncmp("rrb", sheet.instruction_b, 4) == 0)
+			fn_reverse_rotate(stack_a, stack_b, "rrb");
+		sheet.moves_b--;
+	}
 }
 
 void	do_rotation(t_stack **stack_a, t_stack **stack_b)
 {
 	t_sheet	sheet;
-	int		size_a;
-	int		size_b;
-	
-	size_a = list_size(*stack_a);
-	size_b = list_size(*stack_b);
+	t_cost	cost;
+
 	while (list_size(*stack_b) > 0)
 	{
-		sheet = find_cheapest_move(*stack_a, *stack_b);
-		rotator(stack_a, stack_b, sheet);
+		sheet = find_cheapest_move(*stack_a, *stack_b, &cost);
+		get_move_plan(&sheet, list_size(*stack_a), list_size(*stack_b));
+		execute_movements(stack_a, stack_b, sheet);
 		fn_push_a(stack_a, stack_b);
 	}
+	normalize_stack_a(stack_a);
+	// printf("pos a: %d\npos b: %d\n", sheet.position_a, sheet.position_b);
+	// printf("cheapest cost: %d\n", sheet.cheapest_cost);
+	// printf("node_to_move: %d\n", sheet.target_node_to_move);
+	// printf("target_in_a: %d\n", sheet.target_in_a);
+	// printf("moves_a : %d\nmoves_b: %d\n", sheet.moves_a, sheet.moves_b);
+	// printf("instruction_a: %s\n instruction_b: %s\n", sheet.instruction_a, sheet.instruction_b);
 }
 
 int	main(int argc, char *argv[])
@@ -105,7 +140,7 @@ int	main(int argc, char *argv[])
 	// do_rotation(&stack_a, &stack_b);
 	// sheet = find_cheapest_move(stack_a, stack_b);
 	// do_rotation(&stack_a, &stack_b, sheet);
-	normalize_stack_a(&stack_a);
+	// normalize_stack_a(&stack_a);
 	// print_list(stack_a, stack_b);
 	free_list(&stack_a, &stack_b);
 	return (0);
