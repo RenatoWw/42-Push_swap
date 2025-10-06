@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 16:54:23 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:25:15 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,24 +45,41 @@
 // calcular custo da B para a A
 // fazer a LIS na A
 
+
+// printf("pos a: %d\npos b: %d\n", sheet.position_a, sheet.position_b);
+// printf("cheapest cost: %d\n", sheet.cheapest_cost);
+// printf("node_to_move: %d\n", sheet.target_node_to_move);
+// printf("target_in_a: %d\n", sheet.target_in_a);
+
+void	rotator(t_stack **stack_a, t_stack **stack_b, t_sheet sheet)
+{
+		while (sheet.position_a > 1)
+		{
+			fn_rotate(stack_a, stack_b, "ra");
+			sheet.position_a--;
+	
+		}
+		while (sheet.position_b > 1)
+		{
+			fn_rotate(stack_a, stack_b, "rb");
+			sheet.position_b--;
+		}
+}
+
 void	do_rotation(t_stack **stack_a, t_stack **stack_b)
 {
 	t_sheet	sheet;
-	t_cost	cost;
+	int		size_a;
+	int		size_b;
 	
-	rotation_cost(list_size(*stack_a), &cost, 'A');
-	rotation_cost(list_size(*stack_b), &cost, 'B');
-	sheet = find_cheapest_move(*stack_a, *stack_b);
-	// while (list_size(*stack_b) > 0)
-	// {
-	// 	fn_push_a(stack_a, stack_b);
-	// }
-	printf("pos a: %d\npos b: %d\n", sheet.position_a, sheet.position_b);
-	printf("cheapest cost: %d\n", sheet.cheapest_cost);
-	printf("node_to_move: %d\n", sheet.target_node_to_move);
-	printf("target_in_a: %d\n", sheet.target_in_a);
-	// if (sheet.cheapest_cost == 0)
-	// 	fn_push_a(stack_a, stack_b);
+	size_a = list_size(*stack_a);
+	size_b = list_size(*stack_b);
+	while (list_size(*stack_b) > 0)
+	{
+		sheet = find_cheapest_move(*stack_a, *stack_b);
+		rotator(stack_a, stack_b, sheet);
+		fn_push_a(stack_a, stack_b);
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -80,15 +97,16 @@ int	main(int argc, char *argv[])
 		stack_a = fill_stack(ft_split(argv[1], ' '));
 	// sort_list(&stack_a, &stack_b);
 	clear_stack_a(&stack_a, &stack_b);
+	// print_list(stack_a, stack_b);
 	do_rotation(&stack_a, &stack_b);
-	print_list(stack_a, stack_b);
-	do_rotation(&stack_a, &stack_b);
-	print_list(stack_a, stack_b);
-	do_rotation(&stack_a, &stack_b);
+	// print_list(stack_a, stack_b);
+	// do_rotation(&stack_a, &stack_b);
+	// print_list(stack_a, stack_b);
+	// do_rotation(&stack_a, &stack_b);
 	// sheet = find_cheapest_move(stack_a, stack_b);
 	// do_rotation(&stack_a, &stack_b, sheet);
-	// normalize_stack_a(&stack_a);
-	print_list(stack_a, stack_b);
+	normalize_stack_a(&stack_a);
+	// print_list(stack_a, stack_b);
 	free_list(&stack_a, &stack_b);
 	return (0);
 }

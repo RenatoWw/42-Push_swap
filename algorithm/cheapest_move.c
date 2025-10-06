@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:00:23 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 16:55:48 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:01:18 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_sheet	find_cheapest_move(t_stack *stack_a, t_stack *stack_b)
 		cost.total_cost = cost.cost_a + cost.cost_b;
 		if (cost.total_cost < sheet.cheapest_cost)
 		{
-			sheet.cheapest_cost = cost.total_cost;
+			sheet.cheapest_cost = cost.total_cost + 1;
 			sheet.target_node_to_move = temp->content;
 			sheet.target_in_a = cost.target_in_a;
 		}

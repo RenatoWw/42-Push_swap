@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:48:34 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 16:49:27 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 17:12:38 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	normalize_stack_a(t_stack **stack)
 	temp = *stack;
 	cost.position_a = get_position(temp, minimum_number_in_stack(temp));
 	rotation_cost(list_size(temp), &cost, 'A');
-	printf("cost moves: %d\n", cost.moves);
 	while (cost.moves > 0)
 	{
 		if (ft_strncmp("ra", cost.instruction, 4) == 0)
