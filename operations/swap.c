@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:04:23 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/26 17:51:37 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 15:04:05 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	swap_nodes(t_stack **stack)
 
 void	fn_swap(t_stack **stack_a, t_stack **stack_b, char *instruction)
 {
-
 	if (ft_strncmp("sa", instruction, 3) == 0)
 	{
 		ft_printf("%s\n", instruction);
@@ -46,7 +45,6 @@ void	fn_swap(t_stack **stack_a, t_stack **stack_b, char *instruction)
 		if (!(*stack_b) || list_size(*stack_b) < 2)
 			return ;
 		swap_nodes(stack_b);
-
 	}
 	else if (ft_strncmp("ss", instruction, 3) == 0)
 		fn_swap_ss(stack_a, stack_b);

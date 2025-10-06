@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:35:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/02 17:04:40 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 16:54:23 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,25 @@
 // calcular custo da B para a A
 // fazer a LIS na A
 
+void	do_rotation(t_stack **stack_a, t_stack **stack_b)
+{
+	t_sheet	sheet;
+	t_cost	cost;
+	
+	rotation_cost(list_size(*stack_a), &cost, 'A');
+	rotation_cost(list_size(*stack_b), &cost, 'B');
+	sheet = find_cheapest_move(*stack_a, *stack_b);
+	// while (list_size(*stack_b) > 0)
+	// {
+	// 	fn_push_a(stack_a, stack_b);
+	// }
+	printf("pos a: %d\npos b: %d\n", sheet.position_a, sheet.position_b);
+	printf("cheapest cost: %d\n", sheet.cheapest_cost);
+	printf("node_to_move: %d\n", sheet.target_node_to_move);
+	printf("target_in_a: %d\n", sheet.target_in_a);
+	// if (sheet.cheapest_cost == 0)
+	// 	fn_push_a(stack_a, stack_b);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -60,43 +79,16 @@ int	main(int argc, char *argv[])
 	else if (argc == 2)
 		stack_a = fill_stack(ft_split(argv[1], ' '));
 	// sort_list(&stack_a, &stack_b);
-	fn_push_b(&stack_a, &stack_b);
-	fn_push_b(&stack_a, &stack_b);
-	fn_push_b(&stack_a, &stack_b);
-	int	size_a;
-	// int	size_b;
-	t_cost	cost;
-	t_stack	*temp;
-	size_a = list_size(stack_a);
-	temp = stack_b;
-	// size_b = list_size(stack_b);
-	int	cheapest_cost = 2147483647;
-	int	target_node_to_move = 0;
-	int	target_in_a = 0;
-	while (temp != NULL)
-	{
-		cost.target_in_a = find_target_in_a(stack_a, &stack_b->content);
-		cost.position_b = get_position(stack_b, stack_b->content);
-		cost.position_a = get_position(stack_a, cost.target_in_a);
-		cost.cost_b = cost.position_b - 1;
-		cost.cost_a = cost.position_a - 1;
-		cost.total_cost = cost.cost_a + cost.cost_b;
-		if (cost.total_cost < cheapest_cost)
-		{
-			cheapest_cost = cost.total_cost;
-			target_node_to_move = temp->content;
-			target_in_a = cost.target_in_a;
-		}
-		temp = temp->next;
-	}
-	cost.position_a = get_position(stack_a, target_in_a);
-	cost.position_b = get_position(stack_b, target_node_to_move);
+	clear_stack_a(&stack_a, &stack_b);
+	do_rotation(&stack_a, &stack_b);
 	print_list(stack_a, stack_b);
-	printf("pos a: %d\npos b: %d\n", cost.position_a, cost.position_b);
-	printf("cheapest cost: %d\n", cheapest_cost);
-	printf("node_to_move: %d\n", target_node_to_move);
-	printf("target_in_a: %d\n", target_in_a);
-	// printf("cost_a: %d\n", cost.cost_a);
+	do_rotation(&stack_a, &stack_b);
+	print_list(stack_a, stack_b);
+	do_rotation(&stack_a, &stack_b);
+	// sheet = find_cheapest_move(stack_a, stack_b);
+	// do_rotation(&stack_a, &stack_b, sheet);
+	// normalize_stack_a(&stack_a);
+	print_list(stack_a, stack_b);
 	free_list(&stack_a, &stack_b);
 	return (0);
 }

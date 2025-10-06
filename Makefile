@@ -23,6 +23,8 @@ SRCS = push_swap.c \
 		algorithm/turk.c \
 		algorithm/turk_utils.c \
 		algorithm/sort.c \
+		algorithm/cheapest_move.c \
+		algorithm/find_target.c \
 
 OBJ_DIR = objs/
 
