@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 20:32:34 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:50:38 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,6 @@ t_stack	*create_node(int content);
 t_stack	*fill_stack(char **numbers);
 void	insert_front(t_stack **head, int content);
 void	insert_back(t_stack **head, int content);
-void	insert_at_position(t_stack **head, int content, int position);
-void	delete_first(t_stack **head);
-void	delete_last(t_stack **head);
-void	delete_at_position(t_stack **head, int position);
 void	print_list(t_stack *stack_a, t_stack *stack_b);
 void	free_list(t_stack **stack_a, t_stack **stack_b);
 void	fill_index(t_stack **stack);
@@ -92,7 +88,6 @@ void	execute_movements(t_stack **stack_a, t_stack **stack_b, t_sheet sheet);
 void	get_move_plan(t_sheet *sheet, int size_a, int size_b);
 void	double_movement(t_stack **stack_a, t_stack **stack_b, t_sheet *sheet);
 int		is_sorted(t_stack **stack);
-int		get_lis_length(t_stack **stack);
 void	stack_to_rotate(t_cost *cost, char stack_id, int rr_cost, int rrr_cost);
 int		get_position(t_stack *stack, int value);
 int		maximum_number_in_stack(t_stack *stack);

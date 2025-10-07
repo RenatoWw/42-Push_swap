@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/16 17:46:50 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/23 17:03:31 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/07 13:49:59 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,4 @@ void	insert_back(t_stack **head, int content)
 	temp->next = newnode;
 	newnode->next = NULL;
 	newnode->prev = temp;
-}
-
-void	insert_at_position(t_stack **head, int content, int position)
-{
-	t_stack	*newnode;
-	t_stack	*temp;
-	int		size;
-
-	size = list_size(*head);
-	if (position > size || position < 1)
-		return ;
-	else if (position == 1)
-		insert_front(head, content);
-	else if (position == size)
-		insert_back(head, content);
-	else
-	{
-		newnode = create_node(content);
-		temp = *head;
-		while (--position)
-			temp = temp->next;
-		newnode->prev = temp;
-		newnode->next = temp->next;
-		temp->next = newnode;
-	}
 }
