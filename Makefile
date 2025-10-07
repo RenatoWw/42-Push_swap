@@ -8,7 +8,6 @@ PRINTF_A = includes/printf/libftprintf.a
 
 SRCS = push_swap.c \
 		list_functions/linked_list_utils.c \
-		list_functions/linked_list_delete.c \
 		list_functions/linked_list_insert.c \
 		parser.c \
 		error.c \
@@ -20,7 +19,6 @@ SRCS = push_swap.c \
 		operations/reverse_rotate.c \
 		algorithm/three_elem_sort.c \
 		algorithm/four_elem_sort.c \
-		algorithm/lis.c \
 		algorithm/turk.c \
 		algorithm/turk_utils.c \
 		algorithm/sort.c \
