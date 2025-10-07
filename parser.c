@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:03:16 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/25 14:31:58 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 21:01:41 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,32 @@ int	check_number(char *str)
 	return (0);
 }
 
-char	**parse_string(char **str)
+char	**parse_string(int argc, char **str)
 {
-	// int		i;
+	int		i;
+	int		has_space;
+	int		multiple_args;
+	char	*trimmed;
 
-	// i = 0;
-	if (str[0] == NULL)
+	trimmed = ft_strtrim(str[1], " ");
+	if (ft_strlen(trimmed) == 0)
 	{
-		ft_printf("Error\n");
-		free_split(str);
-		exit(1);
+		free(trimmed);
+		ft_error(str);
 	}
-	// while (str[i])
-	// {
-	// 	if (ft_strncmp(str[i], "./push_swap", 11) == 0)
-	// 		i++;
-	// 	str = ft_split(str[i], ' ');
-	// 	i++;
-	// }
+	free(trimmed);
+	i = 0;
+	if (str[i] == NULL)
+		ft_error(str);
+	while (str[i])
+	{
+		if (ft_strchr(str[i++], ' '))
+			has_space = 1;
+		if (argc > 2)
+			multiple_args = 1;
+	}
+	if (has_space == 1 && multiple_args == 1)
+		ft_error(str);
 	return (str);
 }
 
@@ -108,7 +116,6 @@ void	parse_numbers(char **str)
 	int	i;
 	int	j;
 
-	str = parse_string(str);
 	if (ft_strncmp(str[0], "./push_swap", 11) == 0)
 		i = 1;
 	else
@@ -119,12 +126,7 @@ void	parse_numbers(char **str)
 		while (str[i][j])
 		{
 			if (check_number(str[i]) == 1)
-			{
-				ft_printf("Error\n");
-				if (!(ft_strncmp(str[0], "./push_swap", 11) == 0))
-					free_split(str);
-				exit(1);
-			}
+				ft_error(str);
 			j++;
 		}
 		i++;

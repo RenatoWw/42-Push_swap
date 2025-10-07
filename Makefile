@@ -11,6 +11,7 @@ SRCS = push_swap.c \
 		list_functions/linked_list_delete.c \
 		list_functions/linked_list_insert.c \
 		parser.c \
+		error.c \
 		fill_stack.c \
 		free.c \
 		operations/swap.c \
@@ -25,6 +26,7 @@ SRCS = push_swap.c \
 		algorithm/sort.c \
 		algorithm/cheapest_move.c \
 		algorithm/find_target.c \
+		algorithm/rotation_cost.c \
 
 OBJ_DIR = objs/
 
@@ -44,6 +46,9 @@ $(LIBFT_A):
 
 $(PRINTF_A):
 	$(MAKE) -s -C $(PRINTF)
+
+norm:
+	norminette push_swap.h $(SRCS)
 
 clean:
 	$(MAKE) -C $(LIBFT) clean

@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:48:34 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 17:12:38 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 20:20:26 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ void	normalize_stack_a(t_stack **stack)
 			fn_reverse_rotate(stack, NULL, "rra");
 		cost.moves--;
 	}
+}
+
+void	clear_stack_a(t_stack **stack_a, t_stack **stack_b)
+{
+	while (list_size(*stack_a) > 3)
+		fn_push_b(stack_a, stack_b);
+	three_elem_sort(stack_a);
 }
 
 int	get_position(t_stack *stack, int content)
@@ -77,16 +84,4 @@ int	minimum_number_in_stack(t_stack *stack)
 		temp = temp->next;
 	}
 	return (minimum);
-}
-
-void	rotate_calculator(t_stack **stack_a, t_cost cost)
-{
-	while (cost.moves > 0)
-	{
-		if (ft_strncmp("ra", cost.instruction, 4) == 0)
-			fn_rotate(stack_a, NULL, "ra");
-		if (ft_strncmp("rra", cost.instruction, 4) == 0)
-			fn_reverse_rotate(stack_a, NULL, "rra");
-		cost.moves--;
-	}
 }

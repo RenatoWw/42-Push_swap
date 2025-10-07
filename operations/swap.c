@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 16:04:23 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 15:04:05 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:40:48 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,10 @@ void	swap_nodes(t_stack **stack)
 	temp->next = temp2->next;
 	if (temp->next != NULL)
 		temp->next->prev = temp;
-	// else
-	// 	temp->next->prev = NULL;
 	temp2->next = temp;
 	temp->prev = temp2;
 	temp2->prev = NULL;
-	*stack = temp2;	
+	*stack = temp2;
 }
 
 void	fn_swap(t_stack **stack_a, t_stack **stack_b, char *instruction)
