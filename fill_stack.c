@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:04:47 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/09/30 16:51:27 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/07 19:58:22 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,14 @@
 void	fill_index(t_stack **stack)
 {
 	t_stack	*temp;
-	t_stack	*temp2;
 	int		index_value;
 
 	temp = *stack;
+	index_value = 1;
 	while (temp != NULL)
 	{
-		temp2 = *stack;
-		index_value = 1;
-		while (temp2 != NULL)
-		{
-			if (temp->content > temp2->content)
-					index_value++;
-			temp2 = temp2->next;
-		}
 		temp->index = index_value;
+		index_value++;
 		temp = temp->next;
 	}
 }

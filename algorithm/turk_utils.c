@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:48:34 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 20:20:26 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:05:42 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,13 @@ void	normalize_stack_a(t_stack **stack)
 
 void	clear_stack_a(t_stack **stack_a, t_stack **stack_b)
 {
-	while (list_size(*stack_a) > 3)
-		fn_push_b(stack_a, stack_b);
-	three_elem_sort(stack_a);
+	while (is_sorted(stack_a) != 0)
+	{
+		if ((*stack_a)->is_in_lis == 1)
+			fn_rotate(stack_a, stack_b, "ra");
+		if ((*stack_a)->is_in_lis == 0)
+			fn_push_b(stack_a, stack_b);
+	}
 }
 
 int	get_position(t_stack *stack, int content)

@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/07 13:50:38 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/07 19:59:42 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ typedef struct s_stack
 {
 	int				content;
 	int				index;
-	int				lis_len;
+	int				is_in_lis;
 	struct s_stack	*prev;
 	struct s_stack	*next;
-	struct s_stack	*next_in_lis;
 }		t_stack;
 
 typedef struct s_sheet
@@ -51,6 +50,13 @@ typedef struct s_cost
 	int		moves;
 	char	*instruction;
 }		t_cost;
+
+typedef struct s_lis
+{
+	int	last_n_found;
+	int	max_pos;
+	int	max_lis;
+}		t_lis;
 
 void	parse_numbers(char **str);
 void	free_split(char **line);
@@ -94,5 +100,15 @@ int		maximum_number_in_stack(t_stack *stack);
 int		minimum_number_in_stack(t_stack *stack);
 int		find_target_in_a(t_stack *stack_a, int *b_value);
 int		find_target_in_b(t_stack *stack_b, int *a_value);
+
+int		*calculate_lis(t_stack *stack);
+int		*fill_lis_arr(int *lis_arr, int *aux_arr, int size);
+int		*create_aux_arr(t_stack *stack);
+int		*create_index_arr(int *aux_arr, int *lis_arr, int size);
+int		*revert_arr(int *idx_arr, int size);
+int		get_max_position(int *lis_arr, int max_lis, int size);
+int		get_max_lis(int *lis_arr, int size);
+void	set_lis_to_zero(t_stack *stack_a);
+void	assign_lis(t_stack *stack_a);
 
 #endif

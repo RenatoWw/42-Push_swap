@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:03:16 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 21:01:41 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/07 16:03:04 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,7 @@ int	check_number(char *str)
 char	**parse_string(int argc, char **str)
 {
 	int		i;
-	int		has_space;
-	int		multiple_args;
+	int		flag;
 	char	*trimmed;
 
 	trimmed = ft_strtrim(str[1], " ");
@@ -99,14 +98,11 @@ char	**parse_string(int argc, char **str)
 	i = 0;
 	if (str[i] == NULL)
 		ft_error(str);
+	flag = 0;
 	while (str[i])
-	{
-		if (ft_strchr(str[i++], ' '))
-			has_space = 1;
-		if (argc > 2)
-			multiple_args = 1;
-	}
-	if (has_space == 1 && multiple_args == 1)
+		if (ft_strchr(str[i++], ' ') && argc > 2)
+			flag = 1;
+	if (flag == 1)
 		ft_error(str);
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 14:32:26 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/01 16:51:23 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/07 20:02:53 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_sorted(t_stack **stack)
 	temp = *stack;
 	while (temp->next != NULL)
 	{
-		if (temp->index < temp->next->index)
+		if (temp->content < temp->next->content)
 			temp = temp->next;
 		else
 			return (1);
