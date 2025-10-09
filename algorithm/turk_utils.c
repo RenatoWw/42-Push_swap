@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 15:48:34 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 20:20:26 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:25:45 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,16 @@ void	normalize_stack_a(t_stack **stack)
 
 	temp = *stack;
 	cost.position_a = get_position(temp, minimum_number_in_stack(temp));
-	rotation_cost(list_size(temp), &cost, 'A');
+	if (cost.position_a - 1 < list_size(*stack) - (cost.position_a - 1))
+	{
+		cost.moves = cost.position_a - 1;
+		cost.instruction = "ra";
+	}
+	else
+	{
+		cost.moves = list_size(*stack) - (cost.position_a - 1);
+		cost.instruction = "rra";
+	}
 	while (cost.moves > 0)
 	{
 		if (ft_strncmp("ra", cost.instruction, 4) == 0)
@@ -32,9 +41,13 @@ void	normalize_stack_a(t_stack **stack)
 
 void	clear_stack_a(t_stack **stack_a, t_stack **stack_b)
 {
-	while (list_size(*stack_a) > 3)
-		fn_push_b(stack_a, stack_b);
-	three_elem_sort(stack_a);
+	while (is_sorted(stack_a) != 0)
+	{
+		if ((*stack_a)->is_in_lis == 1)
+			fn_rotate(stack_a, stack_b, "ra");
+		if ((*stack_a)->is_in_lis == 0)
+			fn_push_b(stack_a, stack_b);
+	}
 }
 
 int	get_position(t_stack *stack, int content)

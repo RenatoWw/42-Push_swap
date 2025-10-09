@@ -25,6 +25,9 @@ SRCS = push_swap.c \
 		algorithm/cheapest_move.c \
 		algorithm/find_target.c \
 		algorithm/rotation_cost.c \
+		lis_alg/create_idx_arr.c \
+		lis_alg/create_lis_arr.c \
+		lis_alg/assign_lis.c \
 
 OBJ_DIR = objs/
 
@@ -51,7 +54,6 @@ norm:
 clean:
 	$(MAKE) -C $(LIBFT) clean
 	$(MAKE) -C $(PRINTF) clean
-	rm -r $(OBJS)
 	rm -rf $(OBJ_DIR)
 
 fclean: clean

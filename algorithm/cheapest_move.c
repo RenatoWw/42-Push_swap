@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 15:00:23 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/06 18:06:13 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/09 18:26:23 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ t_sheet	find_cheapest_move(t_stack *stack_a, t_stack *stack_b, t_cost *cost)
 		cost->target_in_a = find_target_in_a(stack_a, &temp->content);
 		cost->position_b = get_position(stack_b, temp->content);
 		cost->position_a = get_position(stack_a, cost->target_in_a);
-		rotation_cost(list_size(stack_b), cost, 'B');
-		rotation_cost(list_size(stack_a), cost, 'A');
-		cost->total_cost = cost->cost_a + cost->cost_b + 1;
+		rotation_cost(stack_a, stack_b, cost);
 		if (cost->total_cost < sheet.cheapest_cost)
 		{
 			sheet.cheapest_cost = cost->total_cost;
