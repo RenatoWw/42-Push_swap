@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 19:59:11 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/07 19:59:31 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/09 18:26:11 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	set_lis_to_zero(t_stack *stack_a)
 		temp->is_in_lis = 0;
 		temp = temp->next;
 	}
-	
 }
 
 void	assign_lis(t_stack *stack_a)

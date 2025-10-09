@@ -6,7 +6,7 @@
 /*   By: ranhaia- <ranhaia-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 14:38:09 by ranhaia-          #+#    #+#             */
-/*   Updated: 2025/10/07 19:59:42 by ranhaia-         ###   ########.fr       */
+/*   Updated: 2025/10/09 17:37:21 by ranhaia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_sheet
 	int		cheapest_cost;
 	int		target_node_to_move;
 	int		target_in_a;
+	int		target_in_b;
 	int		position_a;
 	int		position_b;
 	int		moves_a;
@@ -42,6 +43,7 @@ typedef struct s_sheet
 typedef struct s_cost
 {
 	int		target_in_a;
+	int		target_in_b;
 	int		position_b;
 	int		cost_b;
 	int		position_a;
@@ -82,10 +84,12 @@ void	fn_push_b(t_stack **stack_a, t_stack **stack_b);
 void	fn_rotate(t_stack **stack_a, t_stack **stack_b, char *instruction);
 void	fn_reverse_rotate(t_stack **stck_a, t_stack **stck_b, char *operation);
 
-t_cost	*rotation_cost(int stack_size, t_cost *cost, char stack_id);
+t_cost	*rotation_cost(t_stack *stack_a, t_stack *stack_b, t_cost *cost);
 t_sheet	find_cheapest_move(t_stack *stack_a, t_stack *stack_b, t_cost *cost);
+void	stack_to_rotate(t_cost *cost, char stack_id, int below);
 void	three_elem_sort(t_stack **stack);
 void	four_elem_sort(t_stack **stack_a, t_stack **stack_b);
+void	five_elem_sort(t_stack **stack_a, t_stack **stack_b);
 void	sort_list(t_stack **stack_a, t_stack **stack_b);
 void	turk_sort(t_stack **stack_a, t_stack **stack_b);
 void	normalize_stack_a(t_stack **stack);
@@ -94,7 +98,6 @@ void	execute_movements(t_stack **stack_a, t_stack **stack_b, t_sheet sheet);
 void	get_move_plan(t_sheet *sheet, int size_a, int size_b);
 void	double_movement(t_stack **stack_a, t_stack **stack_b, t_sheet *sheet);
 int		is_sorted(t_stack **stack);
-void	stack_to_rotate(t_cost *cost, char stack_id, int rr_cost, int rrr_cost);
 int		get_position(t_stack *stack, int value);
 int		maximum_number_in_stack(t_stack *stack);
 int		minimum_number_in_stack(t_stack *stack);
