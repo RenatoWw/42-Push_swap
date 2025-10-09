@@ -19,6 +19,7 @@ SRCS = push_swap.c \
 		operations/reverse_rotate.c \
 		algorithm/three_elem_sort.c \
 		algorithm/four_elem_sort.c \
+		algorithm/five_elem_sort.c \
 		algorithm/turk.c \
 		algorithm/turk_utils.c \
 		algorithm/sort.c \
